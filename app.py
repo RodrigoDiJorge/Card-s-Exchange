@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import json
 
 app = Flask(__name__)
@@ -8,18 +8,21 @@ pronto = {}
 @app.route("/")
 def index():
 
-    pronto['cartas'] = [{},{}]
-    pronto['carteira'] = 500
-    with open('dados.json','w') as arq:
-        arq.write(json.dumps(pronto))
+
 
     return render_template('index.html')
 
 
 @app.route("/pay", methods=['GET'])
 def pagamento():
-    nome = request.args.get('card')
-    valor = request.args.get('valor')
-    print(valor)
-    print(nome)
+    file = open('dados.json')
+    dados = json.load(file)
+       
+    id = request.args.get('id')
+    
+
+    print(id)
+
+    with open('dados.json','w') as arq:
+        arq.write(json.dumps(pronto))
     return 'i'

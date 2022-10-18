@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "nome":"Ulamog",
+        "valor":150
+    },
+    {
+        "id":2,
+        "nome":"Emrakul",
+        "valor":100
+    },
+    {
+        "id":3,
+        "nome":"Kozilek",
+        "valor":200
+    }
+]

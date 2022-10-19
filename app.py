@@ -44,7 +44,6 @@ def pagamento():
                     carteira = user["carteira"]
                     print(carteira)
                     result = float(carteira) - float(valor)
-                    string(result)
                     user['carteira'] = result
                     with open("dados.json", "w") as newFile:
                         json.dump(user, newFile)

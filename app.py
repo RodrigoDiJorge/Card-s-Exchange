@@ -33,7 +33,9 @@ def pagamento():
     card = json.load(file)
     file2 = open('dados.json')
     users = json.load(file2)
-       
+    
+    valor = ''
+
     idCarta = request.args.get('id')
     print(idCarta)
     for carta in card:
@@ -44,12 +46,13 @@ def pagamento():
                     carteira = user["carteira"]
                     result = float(carteira) - float(valor)
                     user['carteira'] = result
+                    valor = user['carteira']
 
     file.close()
     file2.close()
     with open("dados.json", "w") as newFile:
         json.dump(users, newFile)
-    return render_template("comprovante.html", variable = user['carteira'])
+    return render_template("comprovante.html", variable = valor)
 
 @app.route("/comprovante")
 def comprova():

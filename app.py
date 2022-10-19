@@ -22,10 +22,8 @@ def cards():
             global id
             id = user["id"]
             return render_template('cartas.html')
-        else:
-            return render_template('index.html')
-        
-    return 'logado'
+                   
+    return render_template('index.html')
 
 @app.route("/pay", methods=['GET'])
 def pagamento():

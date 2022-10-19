@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-id = ""
+idUser = "1"
 
 @app.route("/")
 def index():             
@@ -18,8 +18,8 @@ def cards():
     dados = json.load(file)
 
     for user in dados:
+        
         if user["usuario"] == usuario:
-            id = user["id"]
             return render_template('cartas.html')
         else:
             return render_template('index.html')
@@ -40,13 +40,18 @@ def pagamento():
             print('dentro do if')
             valor = carta['valor']
             for user in users:
-                if user["id"] == id:
+                if user["id"] == idUser:
                     carteira = user["carteira"]
                     print(carteira)
-                    int(carteira)
-                    int(valor)
-                    carteira -= valor
+                    float(carteira)
+                    float(valor)
+                    carteira = carteira - valor
                     string(carteira)
+                    user['carteira'] = carteira
+                    with open("dados.json", "w") as newFile:
+                        json.dump(user, newFile)
 
+    file.close()
+    file2.close()
     return 'pago'
 

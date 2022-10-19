@@ -18,9 +18,7 @@ def cards():
 
     for user in dados:
         if user["usuario"] == usuario:
-            print('foi')
             id = user["id"]
-            print(user["usuario"])
             return render_template('cartas.html')
         else:
             return render_template('index.html')
@@ -34,7 +32,7 @@ def pagamento():
     users = json.load(file2)
        
     idCarta = request.args.get('id')
-    
+    print(idCarta)
     for carta in card:
         if carta['id'] == idCarta:
             valor = carta['valor']
@@ -44,5 +42,5 @@ def pagamento():
                     print(carteira)
                     carteira -= valor
 
-    print(id)
+    return 'pago'
 

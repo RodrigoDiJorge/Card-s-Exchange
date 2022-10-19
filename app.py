@@ -49,6 +49,6 @@ def pagamento():
     file.close()
     file2.close()
     with open("dados.json", "w") as newFile:
-        json.dump(user, newFile)
+        json.dump(users, newFile)
     return 'pago'
 

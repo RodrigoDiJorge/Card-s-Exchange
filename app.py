@@ -4,12 +4,7 @@ import json
 
 app = Flask(__name__)
 
-id = ""
-
-def pegaID(oi):
-    idUser = oi
-    return idUser
-
+id = "1"
 @app.route("/")
 def index():             
     return render_template('index.html')
@@ -25,7 +20,7 @@ def cards():
         
         if user["usuario"] == usuario:      
             ids = user['id']
-            id = pegaID(ids)
+            global id = ids
             return render_template('cartas.html')
         else:
             return render_template('index.html')
@@ -53,7 +48,7 @@ def pagamento():
     file2.close()
     with open("dados.json", "w") as newFile:
         json.dump(users, newFile)
-    return render_template("comprovante.html")
+    return render_template("comprovante.html", variable = user['carteira'])
 
 @app.route("/comprovante")
 def comprova():

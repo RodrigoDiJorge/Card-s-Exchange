@@ -2,8 +2,6 @@ import string
 from flask import Flask, render_template, request, jsonify
 import json
 
-from symbol import return_stmt
-
 app = Flask(__name__)
 
 idUser = "1"

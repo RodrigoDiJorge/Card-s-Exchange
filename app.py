@@ -1,9 +1,10 @@
+import string
 from flask import Flask, render_template, request, jsonify
 import json
 
 app = Flask(__name__)
 
-id = 0
+id = ""
 
 @app.route("/")
 def index():             
@@ -34,13 +35,18 @@ def pagamento():
     idCarta = request.args.get('id')
     print(idCarta)
     for carta in card:
+        print('dentro do for')
         if carta['id'] == idCarta:
+            print('dentro do if')
             valor = carta['valor']
             for user in users:
                 if user["id"] == id:
                     carteira = user["carteira"]
                     print(carteira)
+                    int(carteira)
+                    int(valor)
                     carteira -= valor
+                    string(carteira)
 
     return 'pago'
 

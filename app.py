@@ -45,10 +45,10 @@ def pagamento():
                     print(carteira)
                     result = float(carteira) - float(valor)
                     user['carteira'] = result
-                    with open("dados.json", "w") as newFile:
-                        json.dump(user, newFile)
 
     file.close()
     file2.close()
+    with open("dados.json", "w") as newFile:
+        json.dump(user, newFile)
     return 'pago'
 

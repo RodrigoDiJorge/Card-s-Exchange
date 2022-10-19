@@ -1,1 +1,1 @@
-[{"id": "1", "usuario": "user1", "carteira": -100.0}, {"id": "2", "usuario": "user2", "carteira": "500"}, {"id": "3", "usuario": "user3", "carteira": "500"}]
+[{"id": "1", "usuario": "user1", "carteira": -100.0}, {"id": "2", "usuario": "user2", "carteira": "500"}, {"id": "3", "usuario": "user3", "carteira": 300.0}]

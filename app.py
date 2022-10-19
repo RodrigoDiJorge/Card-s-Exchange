@@ -35,14 +35,11 @@ def pagamento():
     idCarta = request.args.get('id')
     print(idCarta)
     for carta in card:
-        print('dentro do for')
         if carta['id'] == idCarta:
-            print('dentro do if')
             valor = carta['valor']
             for user in users:
                 if user["id"] == idUser:
                     carteira = user["carteira"]
-                    print(carteira)
                     result = float(carteira) - float(valor)
                     user['carteira'] = result
 
@@ -50,5 +47,5 @@ def pagamento():
     file2.close()
     with open("dados.json", "w") as newFile:
         json.dump(users, newFile)
-    return 'pago'
+    return render_template("comprovante.html")
 

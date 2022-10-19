@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-id = "1"
+id = ""
 @app.route("/")
 def index():             
     return render_template('index.html')
@@ -19,11 +19,12 @@ def cards():
     for user in dados:
         
         if user["usuario"] == usuario:      
-            ids = user['id']
-            global id = ids
+            global id
+            id = user["id"]
             return render_template('cartas.html')
         else:
             return render_template('index.html')
+        
     return 'logado'
 
 @app.route("/pay", methods=['GET'])

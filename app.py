@@ -43,11 +43,9 @@ def pagamento():
                 if user["id"] == idUser:
                     carteira = user["carteira"]
                     print(carteira)
-                    float(carteira)
-                    float(valor)
-                    carteira = carteira - valor
-                    string(carteira)
-                    user['carteira'] = carteira
+                    result = float(carteira) - float(valor)
+                    string(result)
+                    user['carteira'] = result
                     with open("dados.json", "w") as newFile:
                         json.dump(user, newFile)
 

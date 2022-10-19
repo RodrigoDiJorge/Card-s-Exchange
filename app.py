@@ -43,14 +43,6 @@ def pagamento():
                     carteira = user["carteira"]
                     print(carteira)
                     carteira -= valor
-    file.close()
-    file2.close()
-    users.append({
-        "carteira": users["carteira"],
-    })
 
     print(id)
 
-    with open('dados.json','w') as arq:
-        arq.write(json.dumps(user))
-    return 'i'

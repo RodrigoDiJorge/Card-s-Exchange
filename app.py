@@ -2,9 +2,15 @@ import string
 from flask import Flask, render_template, request, jsonify
 import json
 
+from symbol import return_stmt
+
 app = Flask(__name__)
 
 idUser = "1"
+
+def pegaID(oi):
+    idUser = oi
+    return idUser
 
 @app.route("/")
 def index():             
@@ -19,7 +25,9 @@ def cards():
 
     for user in dados:
         
-        if user["usuario"] == usuario:
+        if user["usuario"] == usuario:      
+            id = user['id']
+            pegaID(id)
             return render_template('cartas.html')
         else:
             return render_template('index.html')
@@ -38,7 +46,7 @@ def pagamento():
         if carta['id'] == idCarta:
             valor = carta['valor']
             for user in users:
-                if user["id"] == idUser:
+                if user["id"] == pegaID():
                     carteira = user["carteira"]
                     result = float(carteira) - float(valor)
                     user['carteira'] = result
@@ -49,3 +57,6 @@ def pagamento():
         json.dump(users, newFile)
     return render_template("comprovante.html")
 
+@app.route("/comprovante")
+def comprova():
+    return render_template("cartas.html")
